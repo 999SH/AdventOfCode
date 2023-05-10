@@ -2,11 +2,14 @@
   "name": "aoc",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "day1/day1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "queue-fifo": "^0.2.6"
+  }
 }
