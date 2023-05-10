@@ -1,0 +1,21 @@
+/*
+                [V]     [C]     [M]
+[V]     [J]     [N]     [H]     [V]
+[R] [F] [N]     [W]     [Z]     [N]
+[H] [R] [D]     [Q] [M] [L]     [B]
+[B] [C] [H] [V] [R] [C] [G]     [R]
+[G] [G] [F] [S] [D] [H] [B] [R] [S]
+[D] [N] [S] [D] [H] [G] [J] [J] [G]
+[W] [J] [L] [J] [S] [P] [F] [S] [L]
+ 1   2   3   4   5   6   7   8   9
+
+let stack1 = ['W','D','G','B','H','R','V']
+let stack2 = ['J','N','G','C','R','F']
+let stack3 = ['L','S','F','H','D','N','J']
+let stack4 = ['J','D','S','V']
+let stack5 = ['S','H','D','R','Q','W','N','V']
+let stack6 = ['P','G','H','C','M']
+let stack7 = ['F','J','B','G','L','Z','H','C']
+let stack8 = ['S','J','R']
+let stack9 = ['L','G','S','R','B','N','V','M']
+*/
