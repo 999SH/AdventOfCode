@@ -16,3 +16,4 @@ node_modules/queue-fifo/index.js
 node_modules/queue-fifo/LICENSE
 node_modules/queue-fifo/package.json
 node_modules/queue-fifo/README.md
+.idea*
