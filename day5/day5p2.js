@@ -19,13 +19,18 @@ const stacks = [
     ['L','G','S','R', 'B', 'N', 'V', 'M']
 ];
 
+let buffer = []
 rl.on('line', (line) => {
     const [move, x, from,y,to,z] = line.split(' ');
+    console.log(x,y,z)
     let i = 0
     while(i < x){
-        stacks[z-1].push(stacks[y-1].pop())
-        i++
+        buffer[i++] = stacks[y-1].pop()
     }
+    while(i > 0){
+        stacks[z-1].push(buffer[--i])
+    }
+    buffer = []
     i = 0
 });
 rl.on('close', () => {
