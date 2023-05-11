@@ -1,45 +1,3 @@
-/*
-const fs = require('fs');
-const readline = require('readline');
-const fileStream = fs.createReadStream('source.txt');
-
-const rl = readline.createInterface({
-    input: fileStream,
-    crlfDelay: Infinity
-});
-
-let totalScore = 0;
-
-rl.on('line', (line) => {
-    const [opponentMove, yourMove] = line.split(' ');
-    let roundScore = 0;
-    switch (yourMove) {
-        case 'X':
-            roundScore += 1;
-            break;
-        case 'Y':
-            roundScore += 2;
-            break;
-        case 'Z':
-            roundScore += 3;
-            break;
-    }
-    if ((opponentMove === 'A' && yourMove === 'Y') ||
-        (opponentMove === 'B' && yourMove === 'X') ||
-        (opponentMove === 'C' && yourMove === 'Z')) {
-        roundScore += 6;
-    } else if (opponentMove === 'A' && yourMove === 'X' ||
-        opponentMove === 'B' && yourMove === 'Y' ||
-        opponentMove === 'C' && yourMove === 'Z') {
-        roundScore += 3;
-    }
-    totalScore += roundScore;
-});
-
-rl.on('close', () => {
-    console.log(totalScore);
-});
-*/
 const fs = require('fs');
 const readline = require('readline');
 const fileStream = fs.createReadStream('source.txt');
@@ -104,5 +62,3 @@ function counter(data){
     }
     console.log(sum)
 }
-
-// Log the entries of the map
