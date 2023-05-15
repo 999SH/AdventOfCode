@@ -10,20 +10,20 @@ const rl = readline.createInterface({
 
 
 let stack = []
-let boolarr = []
+let scenArr = []
+
 rl.on('line', (line) => {
     let str = Array.from(line)
     str = str.map(Number)
-    let boolstr = new Array(str.length).fill(false)
     stack.push(str)
-    boolarr.push(boolstr)
+    scenArr.push(new Array(str.length).fill(1))
 });
 rl.on('close', () => {
     //console.log(stack)
-
     let run = -1
     let i = 0
     let j = 0
+    let treesSeen = 0
     while (run++ < 4){
         switch (run){
             case 0:
@@ -32,10 +32,14 @@ rl.on('close', () => {
                 while (i < stack.length){
                     let max = -1
                     j = 0
+                    treesSeen = 0
                     while (j < stack.length){
                         if (stack[i][j] > max){
                             max = stack[i][j]
-                            boolarr[i][j] = true
+                            scenArr[i][j] *= treesSeen
+                        }
+                        else {
+                            treesSeen++
                         }
                         j++
                     }
@@ -45,13 +49,18 @@ rl.on('close', () => {
             case 1:
                 i = 0
                 j = 0
+                treesSeen = 0
                 while (j < stack.length){
                     let max = -1
                     i = 0
+                    treesSeen = 0
                     while (i < stack.length){
                         if (stack[i][j] > max){
                             max = stack[i][j]
-                            boolarr[i][j] = true
+                            scenArr[i][j] *= treesSeen
+                        }
+                        else {
+                            treesSeen++
                         }
                         i++
                     }
@@ -61,13 +70,17 @@ rl.on('close', () => {
             case 2:
                 i = stack.length-1
                 j = stack.length-1
+                treesSeen = 0
                 while (i > -1){
                     let max = -1
                     j = stack.length-1
                     while (j > -1){
                         if (stack[i][j] > max){
                             max = stack[i][j]
-                            boolarr[i][j] = true
+                            scenArr[i][j] *= treesSeen
+                        }
+                        else {
+                            treesSeen++
                         }
                         j--
                     }
@@ -77,13 +90,17 @@ rl.on('close', () => {
             case 3:
                 i = stack.length-1
                 j = stack.length-1
+                treesSeen = 0
                 while(j > -1){
                     let max = -1
                     i = stack.length-1
                     while (i > -1){
                         if (stack[i][j] > max){
                             max = stack[i][j]
-                            boolarr[i][j] = true
+                            scenArr[i][j] *= treesSeen
+                        }
+                        else {
+                            treesSeen++
                         }
                         i--
                     }
@@ -93,10 +110,12 @@ rl.on('close', () => {
         }
     }
     let k = 0
-    let booltrue = 0
-    while(k < boolarr.length){
-        booltrue += boolarr[k].filter(Boolean).length
+    let newmax = 0
+    while(k < scenArr.length){
+        let testmax = Math.max(...scenArr[k])
+        if (testmax > newmax)
+        newmax = testmax
         k++
     }
-    console.log(booltrue)
+    console.log(newmax)
 });
