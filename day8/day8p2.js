@@ -8,7 +8,6 @@ const rl = readline.createInterface({
     crlfDelay: Infinity
 });
 
-
 let stack = []
 let scenArr = []
 
@@ -18,6 +17,7 @@ rl.on('line', (line) => {
     stack.push(str)
     scenArr.push(new Array(str.length).fill(1))
 });
+//Shitty broken code that doesnt work:
 rl.on('close', () => {
     //console.log(stack)
     let run = -1
@@ -38,9 +38,7 @@ rl.on('close', () => {
                             max = stack[i][j]
                             scenArr[i][j] *= treesSeen
                         }
-                        else {
-                            treesSeen++
-                        }
+                        treesSeen++
                         j++
                     }
                     i++
@@ -49,19 +47,16 @@ rl.on('close', () => {
             case 1:
                 i = 0
                 j = 0
-                treesSeen = 0
                 while (j < stack.length){
+                    treesSeen = 0
                     let max = -1
                     i = 0
-                    treesSeen = 0
                     while (i < stack.length){
                         if (stack[i][j] > max){
                             max = stack[i][j]
                             scenArr[i][j] *= treesSeen
                         }
-                        else {
-                            treesSeen++
-                        }
+                        treesSeen++
                         i++
                     }
                     j++
@@ -70,18 +65,16 @@ rl.on('close', () => {
             case 2:
                 i = stack.length-1
                 j = stack.length-1
-                treesSeen = 0
                 while (i > -1){
                     let max = -1
                     j = stack.length-1
+                    treesSeen = 0
                     while (j > -1){
                         if (stack[i][j] > max){
                             max = stack[i][j]
                             scenArr[i][j] *= treesSeen
                         }
-                        else {
-                            treesSeen++
-                        }
+                        treesSeen++
                         j--
                     }
                     i--
@@ -90,8 +83,8 @@ rl.on('close', () => {
             case 3:
                 i = stack.length-1
                 j = stack.length-1
-                treesSeen = 0
                 while(j > -1){
+                    treesSeen = 0
                     let max = -1
                     i = stack.length-1
                     while (i > -1){
@@ -99,9 +92,7 @@ rl.on('close', () => {
                             max = stack[i][j]
                             scenArr[i][j] *= treesSeen
                         }
-                        else {
-                            treesSeen++
-                        }
+                        treesSeen++
                         i--
                     }
                     j--
@@ -119,3 +110,4 @@ rl.on('close', () => {
     }
     console.log(newmax)
 });
+

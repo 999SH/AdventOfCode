@@ -8,7 +8,6 @@ const rl = readline.createInterface({
     crlfDelay: Infinity
 });
 
-
 let stack = []
 let boolarr = []
 rl.on('line', (line) => {
