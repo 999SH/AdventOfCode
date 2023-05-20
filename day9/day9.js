@@ -9,26 +9,82 @@ const rl = readline.createInterface({
 });
 
 let stack = []
-let latitude = 0
-let longitude = 0
+let headX = 0
+let headY = 0
+let tailX = 0
+let tailY = 0
+let set = new Set()
 
 rl.on('line', (line) => {
     let [dir, amount] = line.split(' ')
-    if (dir === 'U'){
-        latitude += Number(amount)
+    amount = Number(amount)
+    while(amount){
+        if (dir === 'U'){
+            headY++
+            amount--
+        }
+        else if (dir === 'D'){
+            headY--
+            amount--
+        }
+        else if(dir === 'R'){
+            headX++
+            amount--
+        }
+        else if(dir === 'L'){
+            headX--
+            amount--
+        }
+        let len = (Math.abs(headX-tailX)+Math.abs(headY-tailY))
+        if (len > 1) {
+            if (headX > tailX){
+                if(headY > tailY){
+                    //Diagonal case, top right
+                    tailX++
+                    tailY++
+                }
+                else if(headY === tailY){
+                    tailX++
+                }
+                else {
+                    //Diagonal bottom right
+                    tailX++
+                    tailY--
+                }
+            }
+            else if(headX === tailX){
+                if(headY > tailY){
+                    //Right above
+                    tailY++
+                }
+                else if(headY === tailY){
+                    //Same place, no movement
+                }
+                else {
+                    //Right under
+                    tailY--
+                }
+            }
+            else {
+                if(headY > tailY){
+                    //Right above to the left
+                    tailY++
+                    tailX--
+                }
+                else if(headY === tailY){
+                    tailX--
+                }
+                else {
+                    //Right under
+                    tailY--
+                    tailX--
+                }
+            }
+        }
+        set.add(String([tailX,tailY]))
     }
-    else if (dir === 'D'){
-        latitude -= Number(amount)
-    }
-    else if(dir === 'R'){
-        longitude += Number(amount)
-    }
-    else if (dir === 'L'){
-        longitude -= Number(amount)
-    }
-    
 });
 
 rl.on('close', () => {
-    console.log("Long, Lat: ",longitude,latitude)
+    console.log(set)
 });
