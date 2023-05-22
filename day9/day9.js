@@ -36,6 +36,9 @@ rl.on('line', (line) => {
             amount--
         }
         let len = (Math.abs(headX-tailX)+Math.abs(headY-tailY))
+        if (headY !== tailY && headX !== tailX){
+            break
+        }
         if (len > 1) {
             if (headX > tailX){
                 if(headY > tailY){

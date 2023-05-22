@@ -1,0 +1,1 @@
+Day 1 solution can be found under 999SH/Elixir/PROG2/AOC/calories.ex
