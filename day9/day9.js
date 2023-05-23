@@ -8,6 +8,13 @@ const rl = readline.createInterface({
     crlfDelay: Infinity
 });
 
+class Snake {
+    constructor() {
+        this.headX = 0
+        this.headY = 0
+    }
+}
+
 let stack = []
 let headX = 0
 let headY = 0
@@ -37,7 +44,7 @@ rl.on('line', (line) => {
         }
         let len = (Math.abs(headX-tailX)+Math.abs(headY-tailY))
         if (headY !== tailY && headX !== tailX){
-            break
+            len--
         }
         if (len > 1) {
             if (headX > tailX){
